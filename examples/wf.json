@@ -1,0 +1,39 @@
+{
+    "train": {
+        "template_script": "train.json",
+        "data_dict": {
+            "water": {
+                "_train": [
+                    "data/data_0",
+                    "data/data_1",
+                    "data/data_2"
+                ],
+                "_valid": [
+                    "data/data_3"
+                ],
+                "train": "oss://13756/27666/store/upload/8d215a71-5f0d-4b6f-81f5-f902a3930581/tmp4wwit82v.tgz",
+                "valid": "oss://13756/27666/store/upload/5375ab1c-0ca7-4285-99be-d4e6c64b7031/tmph78rbc1q.tgz"
+            }
+        },
+        "image": "registry.dp.tech/dptech/deepmd-kit:2024Q1-d23cf3e",
+        "executor": {
+            "image_pull_policy": "IfNotPresent",
+            "machine_dict": {
+                "batch_type": "Bohrium",
+                "context_type": "Bohrium",
+                "remote_profile": {
+                    "input_data": {
+                        "job_type": "container",
+                        "platform": "ali",
+                        "on_demand": 1,
+                        "scass_type": "c12_m92_1 * NVIDIA V100"
+                    }
+                }
+            },
+            "retry_on_submission_error": 10
+        }
+    },
+    "summary": {
+        "image": "registry.dp.tech/dptech/prod-11881/dpgen2-utils:1.2"
+    }
+}
